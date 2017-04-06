@@ -52,7 +52,7 @@ namespace CanViewer
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_receive = new System.Windows.Forms.TabPage();
-            this.listView_receive = new System.Windows.Forms.ListView();
+            this.receiveControl = new CanViewer.ReceiveControl();
             this.coulumnHeader_CANID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader_Length = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader_Data = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -60,18 +60,16 @@ namespace CanViewer
             this.columnHeader_Count = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage_trace = new System.Windows.Forms.TabPage();
             this.listBox_trace = new System.Windows.Forms.ListBox();
-            this.timer_dataUpdate = new System.Windows.Forms.Timer(this.components);
-            this.timer_formUpdate = new System.Windows.Forms.Timer(this.components);
             this.tabPage_bms = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cellVoltageControl = new CanViewer.CellVoltageControl();
+            this.timer_dataUpdate = new System.Windows.Forms.Timer(this.components);
+            this.timer_formUpdate = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_receive.SuspendLayout();
             this.tabPage_trace.SuspendLayout();
             this.tabPage_bms.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -226,7 +224,7 @@ namespace CanViewer
             // 
             // tabPage_receive
             // 
-            this.tabPage_receive.Controls.Add(this.listView_receive);
+            this.tabPage_receive.Controls.Add(this.receiveControl);
             this.tabPage_receive.Location = new System.Drawing.Point(4, 22);
             this.tabPage_receive.Name = "tabPage_receive";
             this.tabPage_receive.Padding = new System.Windows.Forms.Padding(3);
@@ -235,22 +233,22 @@ namespace CanViewer
             this.tabPage_receive.Text = "Receive";
             this.tabPage_receive.UseVisualStyleBackColor = true;
             // 
-            // listView_receive
+            // receiveControl
             // 
-            this.listView_receive.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.receiveControl.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.coulumnHeader_CANID,
             this.columnHeader_Length,
             this.columnHeader_Data,
             this.columnHeader_CycleTime,
             this.columnHeader_Count});
-            this.listView_receive.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView_receive.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView_receive.Location = new System.Drawing.Point(3, 3);
-            this.listView_receive.Name = "listView_receive";
-            this.listView_receive.Size = new System.Drawing.Size(847, 480);
-            this.listView_receive.TabIndex = 0;
-            this.listView_receive.UseCompatibleStateImageBehavior = false;
-            this.listView_receive.View = System.Windows.Forms.View.Details;
+            this.receiveControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.receiveControl.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.receiveControl.Location = new System.Drawing.Point(3, 3);
+            this.receiveControl.Name = "receiveControl";
+            this.receiveControl.Size = new System.Drawing.Size(847, 480);
+            this.receiveControl.TabIndex = 1;
+            this.receiveControl.UseCompatibleStateImageBehavior = false;
+            this.receiveControl.View = System.Windows.Forms.View.Details;
             // 
             // coulumnHeader_CANID
             // 
@@ -299,15 +297,6 @@ namespace CanViewer
             this.listBox_trace.Size = new System.Drawing.Size(847, 480);
             this.listBox_trace.TabIndex = 0;
             // 
-            // timer_dataUpdate
-            // 
-            this.timer_dataUpdate.Interval = 1;
-            this.timer_dataUpdate.Tick += new System.EventHandler(this.timer_dataUpdate_Tick);
-            // 
-            // timer_formUpdate
-            // 
-            this.timer_formUpdate.Tick += new System.EventHandler(this.timer_formUpdate_Tick);
-            // 
             // tabPage_bms
             // 
             this.tabPage_bms.Controls.Add(this.groupBox1);
@@ -321,7 +310,6 @@ namespace CanViewer
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cellVoltageControl);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(326, 372);
@@ -329,12 +317,14 @@ namespace CanViewer
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cell Voltages";
             // 
-            // cellVoltageControl
+            // timer_dataUpdate
             // 
-            this.cellVoltageControl.Location = new System.Drawing.Point(6, 19);
-            this.cellVoltageControl.Name = "cellVoltageControl";
-            this.cellVoltageControl.Size = new System.Drawing.Size(160, 308);
-            this.cellVoltageControl.TabIndex = 0;
+            this.timer_dataUpdate.Interval = 1;
+            this.timer_dataUpdate.Tick += new System.EventHandler(this.timer_dataUpdate_Tick);
+            // 
+            // timer_formUpdate
+            // 
+            this.timer_formUpdate.Tick += new System.EventHandler(this.timer_formUpdate_Tick);
             // 
             // MainForm
             // 
@@ -345,7 +335,7 @@ namespace CanViewer
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "Can Viewer - v0.1";
+            this.Text = "Can Viewer - v0.2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -355,7 +345,6 @@ namespace CanViewer
             this.tabPage_receive.ResumeLayout(false);
             this.tabPage_trace.ResumeLayout(false);
             this.tabPage_bms.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,7 +359,6 @@ namespace CanViewer
         private TabPage tabPage_receive;
         private TabPage tabPage_trace;
         private ListBox listBox_trace;
-        private ListView listView_receive;
         private ColumnHeader coulumnHeader_CANID;
         private ColumnHeader columnHeader_Length;
         private ColumnHeader columnHeader_Data;
@@ -393,7 +381,7 @@ namespace CanViewer
         private Timer timer_formUpdate;
         private TabPage tabPage_bms;
         private GroupBox groupBox1;
-        private CellVoltageControl cellVoltageControl;
+        private ReceiveControl receiveControl;
     }
 }
 

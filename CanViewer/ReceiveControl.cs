@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,38 +10,43 @@ using System.Windows.Forms;
 
 namespace CanViewer
 {
-    class CanMessageReceiver
+    public partial class ReceiveControl : ListView
     {
-        static public bool IsActive { get; private set; } = true;
+        public bool IsActive { get; private set; } = true;
 
-        static Dictionary<ushort, long> PreviousTimeStamps = new Dictionary<ushort, long>();
+        private Dictionary<ushort, long> PreviousTimeStamps = new Dictionary<ushort, long>();
 
-        static public void Start(ListView.ListViewItemCollection items)
+        public ReceiveControl()
+        {
+            InitializeComponent();
+        }
+
+        public void Start(ListView.ListViewItemCollection items)
         {
             IsActive = true;
         }
 
-        static public void Stop()
+        public void Stop()
         {
             IsActive = false;
         }
 
-        static public void Clear(ListView.ListViewItemCollection items)
+        public void Clear(ListView.ListViewItemCollection items)
         {
             items.Clear();
             PreviousTimeStamps.Clear();
         }
 
-        static public void Update(ListView.ListViewItemCollection items)
+        public void UpdateMessages()
         {
             if (!IsActive) return;
 
             CanMessageInfo[] newMessages = CanInterface.GetMessages;
 
-            foreach(CanMessageInfo message in newMessages)
+            foreach (CanMessageInfo message in newMessages)
             {
                 bool found = false;
-                foreach(ListViewItem item in items)
+                foreach (ListViewItem item in Items)
                 {
                     if (item.SubItems[0].Text == message.CanId.ToString("X3"))
                     {
@@ -59,13 +67,18 @@ namespace CanViewer
                 if (!found)
                 {
                     PreviousTimeStamps.Add(message.CanId, message.TimeStamp);
-                    items.Add(new ListViewItem(new string[] {
+                    Items.Add(new ListViewItem(new string[] {
                         message.CanId.ToString("X3"),
                         message.Length.ToString(),
                         string.Join(" ", message.Data.Select(x => $"{x:X2}")),
                         "-", "1" }));
                 }
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            base.OnPaint(pe);
         }
     }
 }

@@ -53,6 +53,12 @@
     <Compile Include="CanMessageInfo.cs" />
     <Compile Include="CanMessageReceiver.cs" />
     <Compile Include="CanMessageTracer.cs" />
+    <Compile Include="CellVoltageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CellVoltageControl.Designer.cs">
+      <DependentUpon>CellVoltageControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerialPortEmulator.cs" />
+    <EmbeddedResource Include="CellVoltageControl.resx">
+      <DependentUpon>CellVoltageControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

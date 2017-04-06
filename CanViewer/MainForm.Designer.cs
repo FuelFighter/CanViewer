@@ -62,11 +62,16 @@ namespace CanViewer
             this.listBox_trace = new System.Windows.Forms.ListBox();
             this.timer_dataUpdate = new System.Windows.Forms.Timer(this.components);
             this.timer_formUpdate = new System.Windows.Forms.Timer(this.components);
+            this.tabPage_bms = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cellVoltageControl = new CanViewer.CellVoltageControl();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_receive.SuspendLayout();
             this.tabPage_trace.SuspendLayout();
+            this.tabPage_bms.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -211,6 +216,7 @@ namespace CanViewer
             // 
             this.tabControl1.Controls.Add(this.tabPage_receive);
             this.tabControl1.Controls.Add(this.tabPage_trace);
+            this.tabControl1.Controls.Add(this.tabPage_bms);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
@@ -277,7 +283,7 @@ namespace CanViewer
             this.tabPage_trace.Location = new System.Drawing.Point(4, 22);
             this.tabPage_trace.Name = "tabPage_trace";
             this.tabPage_trace.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_trace.Size = new System.Drawing.Size(853, 455);
+            this.tabPage_trace.Size = new System.Drawing.Size(853, 486);
             this.tabPage_trace.TabIndex = 1;
             this.tabPage_trace.Text = "Trace";
             this.tabPage_trace.UseVisualStyleBackColor = true;
@@ -290,7 +296,7 @@ namespace CanViewer
             this.listBox_trace.Location = new System.Drawing.Point(3, 3);
             this.listBox_trace.Name = "listBox_trace";
             this.listBox_trace.ScrollAlwaysVisible = true;
-            this.listBox_trace.Size = new System.Drawing.Size(847, 449);
+            this.listBox_trace.Size = new System.Drawing.Size(847, 480);
             this.listBox_trace.TabIndex = 0;
             // 
             // timer_dataUpdate
@@ -301,6 +307,34 @@ namespace CanViewer
             // timer_formUpdate
             // 
             this.timer_formUpdate.Tick += new System.EventHandler(this.timer_formUpdate_Tick);
+            // 
+            // tabPage_bms
+            // 
+            this.tabPage_bms.Controls.Add(this.groupBox1);
+            this.tabPage_bms.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_bms.Name = "tabPage_bms";
+            this.tabPage_bms.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_bms.Size = new System.Drawing.Size(853, 486);
+            this.tabPage_bms.TabIndex = 2;
+            this.tabPage_bms.Text = "BMS";
+            this.tabPage_bms.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cellVoltageControl);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(326, 372);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Cell Voltages";
+            // 
+            // cellVoltageControl
+            // 
+            this.cellVoltageControl.Location = new System.Drawing.Point(6, 19);
+            this.cellVoltageControl.Name = "cellVoltageControl";
+            this.cellVoltageControl.Size = new System.Drawing.Size(160, 308);
+            this.cellVoltageControl.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -320,6 +354,8 @@ namespace CanViewer
             this.tabControl1.ResumeLayout(false);
             this.tabPage_receive.ResumeLayout(false);
             this.tabPage_trace.ResumeLayout(false);
+            this.tabPage_bms.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,6 +391,9 @@ namespace CanViewer
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private Timer timer_formUpdate;
+        private TabPage tabPage_bms;
+        private GroupBox groupBox1;
+        private CellVoltageControl cellVoltageControl;
     }
 }
 

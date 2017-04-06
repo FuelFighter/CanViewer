@@ -142,8 +142,8 @@ namespace CanViewer
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Can Viewer was made by Sondre Andersen for DNV GL Fuel Fighter 2017.\nIt is made to receive can messages using an Universal Module (UM) programmed with the accompanying .bin file.", 
-                "About Can Viewer version 0.1");
+            MessageBox.Show("Can Viewer was made by Sondre Andersen for DNV GL Fuel Fighter 2017.\nIt is made to receive can messages using an Universal Module (UM) programmed with the accompanying .bin file.",
+                "About Can Viewer version 0.2");
         }
     }
 }

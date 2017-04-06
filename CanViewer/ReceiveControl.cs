@@ -21,19 +21,19 @@ namespace CanViewer
             InitializeComponent();
         }
 
-        public void Start(ListView.ListViewItemCollection items)
+        public void StartReceiver()
         {
             IsActive = true;
         }
 
-        public void Stop()
+        public void StopReceiver()
         {
             IsActive = false;
         }
 
-        public void Clear(ListView.ListViewItemCollection items)
+        public void ClearMessages()
         {
-            items.Clear();
+            Items.Clear();
             PreviousTimeStamps.Clear();
         }
 

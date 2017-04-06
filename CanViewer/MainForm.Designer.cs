@@ -59,7 +59,7 @@ namespace CanViewer
             this.columnHeader_CycleTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader_Count = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage_trace = new System.Windows.Forms.TabPage();
-            this.listBox_trace = new System.Windows.Forms.ListBox();
+            this.traceControl = new CanViewer.TraceControl();
             this.tabPage_bms = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.timer_dataUpdate = new System.Windows.Forms.Timer(this.components);
@@ -277,7 +277,7 @@ namespace CanViewer
             // 
             // tabPage_trace
             // 
-            this.tabPage_trace.Controls.Add(this.listBox_trace);
+            this.tabPage_trace.Controls.Add(this.traceControl);
             this.tabPage_trace.Location = new System.Drawing.Point(4, 22);
             this.tabPage_trace.Name = "tabPage_trace";
             this.tabPage_trace.Padding = new System.Windows.Forms.Padding(3);
@@ -286,16 +286,16 @@ namespace CanViewer
             this.tabPage_trace.Text = "Trace";
             this.tabPage_trace.UseVisualStyleBackColor = true;
             // 
-            // listBox_trace
+            // traceControl
             // 
-            this.listBox_trace.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox_trace.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox_trace.FormattingEnabled = true;
-            this.listBox_trace.Location = new System.Drawing.Point(3, 3);
-            this.listBox_trace.Name = "listBox_trace";
-            this.listBox_trace.ScrollAlwaysVisible = true;
-            this.listBox_trace.Size = new System.Drawing.Size(847, 480);
-            this.listBox_trace.TabIndex = 0;
+            this.traceControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.traceControl.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.traceControl.FormattingEnabled = true;
+            this.traceControl.Location = new System.Drawing.Point(3, 3);
+            this.traceControl.Name = "traceControl";
+            this.traceControl.ScrollAlwaysVisible = true;
+            this.traceControl.Size = new System.Drawing.Size(847, 480);
+            this.traceControl.TabIndex = 0;
             // 
             // tabPage_bms
             // 
@@ -358,7 +358,6 @@ namespace CanViewer
         private TabControl tabControl1;
         private TabPage tabPage_receive;
         private TabPage tabPage_trace;
-        private ListBox listBox_trace;
         private ColumnHeader coulumnHeader_CANID;
         private ColumnHeader columnHeader_Length;
         private ColumnHeader columnHeader_Data;
@@ -382,6 +381,7 @@ namespace CanViewer
         private TabPage tabPage_bms;
         private GroupBox groupBox1;
         private ReceiveControl receiveControl;
+        private TraceControl traceControl;
     }
 }
 

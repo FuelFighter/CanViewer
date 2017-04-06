@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="CanInterface.cs" />
     <Compile Include="CanMessageInfo.cs" />
-    <Compile Include="CanMessageTracer.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +66,12 @@
       <DependentUpon>ReceiveControl.cs</DependentUpon>
     </Compile>
     <Compile Include="SerialPortEmulator.cs" />
+    <Compile Include="TraceControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TraceControl.Designer.cs">
+      <DependentUpon>TraceControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

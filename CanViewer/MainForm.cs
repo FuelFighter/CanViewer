@@ -67,35 +67,35 @@ namespace CanViewer
 
         private void timer_formUpdate_Tick(object sender, EventArgs e)
         {
-            CanMessageTracer.Update(listBox_trace.Items);
+            traceControl.UpdateMessages();
             receiveControl.UpdateMessages();
             CanInterface.ClearBuffer();
         }
 
         private void traceToggleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (CanMessageTracer.IsActive) CanMessageTracer.Stop();
-            else CanMessageTracer.Start(listBox_trace.Items);
+            if (traceControl.IsActive) traceControl.StopTracer();
+            else traceControl.StartTracer();
 
             updateGraphics();
         }
 
         private void traceClearToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CanMessageTracer.Clear(listBox_trace.Items);
+            traceControl.ClearMessages();
         }
 
         private void receiveToggleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (receiveControl.IsActive) receiveControl.Stop();
-            else receiveControl.Start(receiveControl.Items);
+            if (receiveControl.IsActive) receiveControl.StopReceiver();
+            else receiveControl.StartReceiver();
             
             updateGraphics();
         }
 
         private void receiveClearToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            receiveControl.Clear(receiveControl.Items);
+            receiveControl.ClearMessages();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -128,7 +128,7 @@ namespace CanViewer
                 toolStripStatusLabel_receiveActive.Text = "";
             }
 
-            if (CanMessageTracer.IsActive)
+            if (traceControl.IsActive)
             {
                 traceToggleToolStripMenuItem.Text = "Stop";
                 toolStripStatusLabel_traceActive.Text = "Trace active";

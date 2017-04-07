@@ -57,6 +57,10 @@
     <Compile Include="CanReceiveControl.Designer.cs">
       <DependentUpon>CanReceiveControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="CanSendControl.cs" />
+    <Compile Include="CanSendControl.Designer.cs">
+      <DependentUpon>CanSendControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="CanTraceControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -74,6 +78,9 @@
     <Compile Include="SerialPortEmulator.cs" />
     <EmbeddedResource Include="CanReceiveControl.resx">
       <DependentUpon>CanReceiveControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CanSendControl.resx">
+      <DependentUpon>CanSendControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CanTraceControl.resx">
       <DependentUpon>CanTraceControl.cs</DependentUpon>

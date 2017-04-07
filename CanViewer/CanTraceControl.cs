@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace CanViewer
 {
-    public partial class TraceControl : ListBox
+    public partial class CanTraceControl : UserControl
     {
         public bool IsActive { get; private set; } = false;
 
-        public TraceControl()
+        public CanTraceControl()
         {
             InitializeComponent();
         }
@@ -31,18 +31,13 @@ namespace CanViewer
 
         public void ClearMessages()
         {
-            Items.Clear();
+            listBox.Items.Clear();
         }
 
         public void UpdateMessages()
         {
             if (!IsActive) return;
-            Items.AddRange(CanInterface.GetMessages);
-        }
-
-        protected override void OnPaint(PaintEventArgs pe)
-        {
-            base.OnPaint(pe);
+            listBox.Items.AddRange(CanInterface.GetMessages);
         }
     }
 }

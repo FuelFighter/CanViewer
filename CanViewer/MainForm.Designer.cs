@@ -54,9 +54,9 @@ namespace CanViewer
             this.timer_formUpdate = new System.Windows.Forms.Timer(this.components);
             this.tabPage_trace = new System.Windows.Forms.TabPage();
             this.tabPage_receive = new System.Windows.Forms.TabPage();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.canReceiveControl = new CanViewer.CanReceiveControl();
-            this.traceControl = new CanViewer.TraceControl();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.canTraceControl = new CanViewer.CanTraceControl();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabPage_trace.SuspendLayout();
@@ -213,7 +213,7 @@ namespace CanViewer
             // 
             // tabPage_trace
             // 
-            this.tabPage_trace.Controls.Add(this.traceControl);
+            this.tabPage_trace.Controls.Add(this.canTraceControl);
             this.tabPage_trace.Location = new System.Drawing.Point(8, 39);
             this.tabPage_trace.Name = "tabPage_trace";
             this.tabPage_trace.Padding = new System.Windows.Forms.Padding(3);
@@ -233,6 +233,14 @@ namespace CanViewer
             this.tabPage_receive.Text = "Receive";
             this.tabPage_receive.UseVisualStyleBackColor = true;
             // 
+            // canReceiveControl
+            // 
+            this.canReceiveControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.canReceiveControl.Location = new System.Drawing.Point(3, 3);
+            this.canReceiveControl.Name = "canReceiveControl";
+            this.canReceiveControl.Size = new System.Drawing.Size(1207, 738);
+            this.canReceiveControl.TabIndex = 0;
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage_receive);
@@ -244,25 +252,13 @@ namespace CanViewer
             this.tabControl1.Size = new System.Drawing.Size(1229, 791);
             this.tabControl1.TabIndex = 2;
             // 
-            // canReceiveControl
+            // canTraceControl
             // 
-            this.canReceiveControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.canReceiveControl.Location = new System.Drawing.Point(3, 3);
-            this.canReceiveControl.Name = "canReceiveControl";
-            this.canReceiveControl.Size = new System.Drawing.Size(1207, 738);
-            this.canReceiveControl.TabIndex = 0;
-            // 
-            // traceControl
-            // 
-            this.traceControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.traceControl.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.traceControl.FormattingEnabled = true;
-            this.traceControl.ItemHeight = 26;
-            this.traceControl.Location = new System.Drawing.Point(3, 3);
-            this.traceControl.Name = "traceControl";
-            this.traceControl.ScrollAlwaysVisible = true;
-            this.traceControl.Size = new System.Drawing.Size(1207, 738);
-            this.traceControl.TabIndex = 0;
+            this.canTraceControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.canTraceControl.Location = new System.Drawing.Point(3, 3);
+            this.canTraceControl.Name = "canTraceControl";
+            this.canTraceControl.Size = new System.Drawing.Size(1207, 738);
+            this.canTraceControl.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -308,10 +304,10 @@ namespace CanViewer
         private ToolStripMenuItem aboutToolStripMenuItem;
         private Timer timer_formUpdate;
         private TabPage tabPage_trace;
-        private TraceControl traceControl;
         private TabPage tabPage_receive;
         private TabControl tabControl1;
         private CanReceiveControl canReceiveControl;
+        private CanTraceControl canTraceControl;
     }
 }
 

@@ -67,22 +67,22 @@ namespace CanViewer
 
         private void timer_formUpdate_Tick(object sender, EventArgs e)
         {
-            traceControl.UpdateMessages();
+            canTraceControl.UpdateMessages();
             canReceiveControl.UpdateMessages();
             CanInterface.ClearBuffer();
         }
 
         private void traceToggleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (traceControl.IsActive) traceControl.StopTracer();
-            else traceControl.StartTracer();
+            if (canTraceControl.IsActive) canTraceControl.StopTracer();
+            else canTraceControl.StartTracer();
 
             updateGraphics();
         }
 
         private void traceClearToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            traceControl.ClearMessages();
+            canTraceControl.ClearMessages();
         }
 
         private void receiveToggleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -128,7 +128,7 @@ namespace CanViewer
                 toolStripStatusLabel_receiveActive.Text = "";
             }
 
-            if (traceControl.IsActive)
+            if (canTraceControl.IsActive)
             {
                 traceToggleToolStripMenuItem.Text = "Stop";
                 toolStripStatusLabel_traceActive.Text = "Trace active";

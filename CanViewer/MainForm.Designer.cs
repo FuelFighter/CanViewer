@@ -50,26 +50,18 @@ namespace CanViewer
             this.clearToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage_receive = new System.Windows.Forms.TabPage();
-            this.receiveControl = new CanViewer.ReceiveControl();
-            this.coulumnHeader_CANID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_Length = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_Data = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_CycleTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_Count = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabPage_trace = new System.Windows.Forms.TabPage();
-            this.traceControl = new CanViewer.TraceControl();
-            this.tabPage_bms = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.timer_dataUpdate = new System.Windows.Forms.Timer(this.components);
             this.timer_formUpdate = new System.Windows.Forms.Timer(this.components);
+            this.tabPage_trace = new System.Windows.Forms.TabPage();
+            this.tabPage_receive = new System.Windows.Forms.TabPage();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.canReceiveControl = new CanViewer.CanReceiveControl();
+            this.traceControl = new CanViewer.TraceControl();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage_receive.SuspendLayout();
             this.tabPage_trace.SuspendLayout();
-            this.tabPage_bms.SuspendLayout();
+            this.tabPage_receive.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -79,9 +71,9 @@ namespace CanViewer
             this.toolStripStatusLabel_connectionStatus,
             this.toolStripStatusLabel_receiveActive,
             this.toolStripStatusLabel_traceActive});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 536);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 831);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(861, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1229, 37);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -89,19 +81,19 @@ namespace CanViewer
             // 
             this.toolStripStatusLabel_connectionStatus.ForeColor = System.Drawing.Color.Red;
             this.toolStripStatusLabel_connectionStatus.Name = "toolStripStatusLabel_connectionStatus";
-            this.toolStripStatusLabel_connectionStatus.Size = new System.Drawing.Size(86, 17);
+            this.toolStripStatusLabel_connectionStatus.Size = new System.Drawing.Size(174, 32);
             this.toolStripStatusLabel_connectionStatus.Text = "Not connected";
             // 
             // toolStripStatusLabel_receiveActive
             // 
             this.toolStripStatusLabel_receiveActive.Name = "toolStripStatusLabel_receiveActive";
-            this.toolStripStatusLabel_receiveActive.Size = new System.Drawing.Size(81, 17);
+            this.toolStripStatusLabel_receiveActive.Size = new System.Drawing.Size(165, 32);
             this.toolStripStatusLabel_receiveActive.Text = "Receive active";
             // 
             // toolStripStatusLabel_traceActive
             // 
             this.toolStripStatusLabel_traceActive.Name = "toolStripStatusLabel_traceActive";
-            this.toolStripStatusLabel_traceActive.Size = new System.Drawing.Size(0, 17);
+            this.toolStripStatusLabel_traceActive.Size = new System.Drawing.Size(0, 32);
             // 
             // menuStrip1
             // 
@@ -113,7 +105,7 @@ namespace CanViewer
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(861, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1229, 40);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -124,28 +116,28 @@ namespace CanViewer
             this.disconnectToolStripMenuItem,
             this.toolStripSeparator1});
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
-            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(150, 36);
             this.connectionToolStripMenuItem.Text = "Connection";
             this.connectionToolStripMenuItem.DropDownOpened += new System.EventHandler(this.connectionToolStripMenuItem_DropDownOpened);
             // 
             // connectToToolStripMenuItem
             // 
             this.connectToToolStripMenuItem.Name = "connectToToolStripMenuItem";
-            this.connectToToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.connectToToolStripMenuItem.Size = new System.Drawing.Size(233, 38);
             this.connectToToolStripMenuItem.Text = "Connect to";
             // 
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Enabled = false;
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(233, 38);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(130, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(230, 6);
             // 
             // receiveToolStripMenuItem
             // 
@@ -153,21 +145,21 @@ namespace CanViewer
             this.receiveToggleToolStripMenuItem,
             this.clearToolStripMenuItem});
             this.receiveToolStripMenuItem.Name = "receiveToolStripMenuItem";
-            this.receiveToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.receiveToolStripMenuItem.Size = new System.Drawing.Size(108, 36);
             this.receiveToolStripMenuItem.Text = "Receive";
             // 
             // receiveToggleToolStripMenuItem
             // 
             this.receiveToggleToolStripMenuItem.Name = "receiveToggleToolStripMenuItem";
             this.receiveToggleToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.receiveToggleToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.receiveToggleToolStripMenuItem.Size = new System.Drawing.Size(203, 38);
             this.receiveToggleToolStripMenuItem.Text = "Stop";
             this.receiveToggleToolStripMenuItem.Click += new System.EventHandler(this.receiveToggleToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(203, 38);
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.receiveClearToolStripMenuItem_Click);
             // 
@@ -177,21 +169,21 @@ namespace CanViewer
             this.traceToggleToolStripMenuItem,
             this.clearToolStripMenuItem1});
             this.traceToolStripMenuItem.Name = "traceToolStripMenuItem";
-            this.traceToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.traceToolStripMenuItem.Size = new System.Drawing.Size(82, 36);
             this.traceToolStripMenuItem.Text = "Trace";
             // 
             // traceToggleToolStripMenuItem
             // 
             this.traceToggleToolStripMenuItem.Name = "traceToggleToolStripMenuItem";
             this.traceToggleToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.traceToggleToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.traceToggleToolStripMenuItem.Size = new System.Drawing.Size(203, 38);
             this.traceToggleToolStripMenuItem.Text = "Start";
             this.traceToggleToolStripMenuItem.Click += new System.EventHandler(this.traceToggleToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem1
             // 
             this.clearToolStripMenuItem1.Name = "clearToolStripMenuItem1";
-            this.clearToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
+            this.clearToolStripMenuItem1.Size = new System.Drawing.Size(203, 38);
             this.clearToolStripMenuItem1.Text = "Clear";
             this.clearToolStripMenuItem1.Click += new System.EventHandler(this.traceClearToolStripMenuItem_Click);
             // 
@@ -200,122 +192,15 @@ namespace CanViewer
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(77, 36);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(307, 38);
             this.aboutToolStripMenuItem.Text = "About Can Viewer";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage_receive);
-            this.tabControl1.Controls.Add(this.tabPage_trace);
-            this.tabControl1.Controls.Add(this.tabPage_bms);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 24);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(861, 512);
-            this.tabControl1.TabIndex = 2;
-            // 
-            // tabPage_receive
-            // 
-            this.tabPage_receive.Controls.Add(this.receiveControl);
-            this.tabPage_receive.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_receive.Name = "tabPage_receive";
-            this.tabPage_receive.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_receive.Size = new System.Drawing.Size(853, 486);
-            this.tabPage_receive.TabIndex = 0;
-            this.tabPage_receive.Text = "Receive";
-            this.tabPage_receive.UseVisualStyleBackColor = true;
-            // 
-            // receiveControl
-            // 
-            this.receiveControl.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.coulumnHeader_CANID,
-            this.columnHeader_Length,
-            this.columnHeader_Data,
-            this.columnHeader_CycleTime,
-            this.columnHeader_Count});
-            this.receiveControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.receiveControl.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.receiveControl.Location = new System.Drawing.Point(3, 3);
-            this.receiveControl.Name = "receiveControl";
-            this.receiveControl.Size = new System.Drawing.Size(847, 480);
-            this.receiveControl.TabIndex = 1;
-            this.receiveControl.UseCompatibleStateImageBehavior = false;
-            this.receiveControl.View = System.Windows.Forms.View.Details;
-            // 
-            // coulumnHeader_CANID
-            // 
-            this.coulumnHeader_CANID.Text = "CAN ID";
-            this.coulumnHeader_CANID.Width = 87;
-            // 
-            // columnHeader_Length
-            // 
-            this.columnHeader_Length.Text = "Length";
-            this.columnHeader_Length.Width = 85;
-            // 
-            // columnHeader_Data
-            // 
-            this.columnHeader_Data.Text = "Data";
-            this.columnHeader_Data.Width = 420;
-            // 
-            // columnHeader_CycleTime
-            // 
-            this.columnHeader_CycleTime.Text = "Cycle Time";
-            this.columnHeader_CycleTime.Width = 130;
-            // 
-            // columnHeader_Count
-            // 
-            this.columnHeader_Count.Text = "Count";
-            this.columnHeader_Count.Width = 83;
-            // 
-            // tabPage_trace
-            // 
-            this.tabPage_trace.Controls.Add(this.traceControl);
-            this.tabPage_trace.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_trace.Name = "tabPage_trace";
-            this.tabPage_trace.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_trace.Size = new System.Drawing.Size(853, 486);
-            this.tabPage_trace.TabIndex = 1;
-            this.tabPage_trace.Text = "Trace";
-            this.tabPage_trace.UseVisualStyleBackColor = true;
-            // 
-            // traceControl
-            // 
-            this.traceControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.traceControl.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.traceControl.FormattingEnabled = true;
-            this.traceControl.Location = new System.Drawing.Point(3, 3);
-            this.traceControl.Name = "traceControl";
-            this.traceControl.ScrollAlwaysVisible = true;
-            this.traceControl.Size = new System.Drawing.Size(847, 480);
-            this.traceControl.TabIndex = 0;
-            // 
-            // tabPage_bms
-            // 
-            this.tabPage_bms.Controls.Add(this.groupBox1);
-            this.tabPage_bms.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_bms.Name = "tabPage_bms";
-            this.tabPage_bms.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_bms.Size = new System.Drawing.Size(853, 486);
-            this.tabPage_bms.TabIndex = 2;
-            this.tabPage_bms.Text = "BMS";
-            this.tabPage_bms.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(326, 372);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cell Voltages";
             // 
             // timer_dataUpdate
             // 
@@ -326,9 +211,62 @@ namespace CanViewer
             // 
             this.timer_formUpdate.Tick += new System.EventHandler(this.timer_formUpdate_Tick);
             // 
+            // tabPage_trace
+            // 
+            this.tabPage_trace.Controls.Add(this.traceControl);
+            this.tabPage_trace.Location = new System.Drawing.Point(8, 39);
+            this.tabPage_trace.Name = "tabPage_trace";
+            this.tabPage_trace.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_trace.Size = new System.Drawing.Size(1213, 744);
+            this.tabPage_trace.TabIndex = 1;
+            this.tabPage_trace.Text = "Trace";
+            this.tabPage_trace.UseVisualStyleBackColor = true;
+            // 
+            // tabPage_receive
+            // 
+            this.tabPage_receive.Controls.Add(this.canReceiveControl);
+            this.tabPage_receive.Location = new System.Drawing.Point(8, 39);
+            this.tabPage_receive.Name = "tabPage_receive";
+            this.tabPage_receive.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_receive.Size = new System.Drawing.Size(1213, 744);
+            this.tabPage_receive.TabIndex = 0;
+            this.tabPage_receive.Text = "Receive";
+            this.tabPage_receive.UseVisualStyleBackColor = true;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage_receive);
+            this.tabControl1.Controls.Add(this.tabPage_trace);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 40);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1229, 791);
+            this.tabControl1.TabIndex = 2;
+            // 
+            // canReceiveControl
+            // 
+            this.canReceiveControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.canReceiveControl.Location = new System.Drawing.Point(3, 3);
+            this.canReceiveControl.Name = "canReceiveControl";
+            this.canReceiveControl.Size = new System.Drawing.Size(1207, 738);
+            this.canReceiveControl.TabIndex = 0;
+            // 
+            // traceControl
+            // 
+            this.traceControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.traceControl.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.traceControl.FormattingEnabled = true;
+            this.traceControl.ItemHeight = 26;
+            this.traceControl.Location = new System.Drawing.Point(3, 3);
+            this.traceControl.Name = "traceControl";
+            this.traceControl.ScrollAlwaysVisible = true;
+            this.traceControl.Size = new System.Drawing.Size(1207, 738);
+            this.traceControl.TabIndex = 0;
+            // 
             // MainForm
             // 
-            this.ClientSize = new System.Drawing.Size(861, 558);
+            this.ClientSize = new System.Drawing.Size(1229, 868);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -341,10 +279,9 @@ namespace CanViewer
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage_receive.ResumeLayout(false);
             this.tabPage_trace.ResumeLayout(false);
-            this.tabPage_bms.ResumeLayout(false);
+            this.tabPage_receive.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,14 +292,6 @@ namespace CanViewer
         private MenuStrip menuStrip1;
         private ToolStripMenuItem connectionToolStripMenuItem;
         private ToolStripMenuItem connectToToolStripMenuItem;
-        private TabControl tabControl1;
-        private TabPage tabPage_receive;
-        private TabPage tabPage_trace;
-        private ColumnHeader coulumnHeader_CANID;
-        private ColumnHeader columnHeader_Length;
-        private ColumnHeader columnHeader_Data;
-        private ColumnHeader columnHeader_CycleTime;
-        private ColumnHeader columnHeader_Count;
         private ToolStripStatusLabel toolStripStatusLabel_connectionStatus;
         private ToolStripMenuItem disconnectToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
@@ -378,10 +307,11 @@ namespace CanViewer
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private Timer timer_formUpdate;
-        private TabPage tabPage_bms;
-        private GroupBox groupBox1;
-        private ReceiveControl receiveControl;
+        private TabPage tabPage_trace;
         private TraceControl traceControl;
+        private TabPage tabPage_receive;
+        private TabControl tabControl1;
+        private CanReceiveControl canReceiveControl;
     }
 }
 

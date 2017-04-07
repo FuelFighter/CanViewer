@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace CanViewer
 {
-    public partial class ReceiveControl : ListView
+    public partial class CanReceiveControl : UserControl
     {
         public bool IsActive { get; private set; } = true;
 
         private Dictionary<ushort, long> PreviousTimeStamps = new Dictionary<ushort, long>();
 
-        public ReceiveControl()
+        public CanReceiveControl()
         {
             InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace CanViewer
 
         public void ClearMessages()
         {
-            Items.Clear();
+            listView.Items.Clear();
             PreviousTimeStamps.Clear();
         }
 
@@ -46,7 +46,7 @@ namespace CanViewer
             foreach (CanMessageInfo message in newMessages)
             {
                 bool found = false;
-                foreach (ListViewItem item in Items)
+                foreach (ListViewItem item in listView.Items)
                 {
                     if (item.SubItems[0].Text == message.CanId.ToString("X3"))
                     {
@@ -67,18 +67,13 @@ namespace CanViewer
                 if (!found)
                 {
                     PreviousTimeStamps.Add(message.CanId, message.TimeStamp);
-                    Items.Add(new ListViewItem(new string[] {
+                    listView.Items.Add(new ListViewItem(new string[] {
                         message.CanId.ToString("X3"),
                         message.Length.ToString(),
                         string.Join(" ", message.Data.Select(x => $"{x:X2}")),
                         "-", "1" }));
                 }
             }
-        }
-
-        protected override void OnPaint(PaintEventArgs pe)
-        {
-            base.OnPaint(pe);
         }
     }
 }

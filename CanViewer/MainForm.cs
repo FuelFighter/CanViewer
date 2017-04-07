@@ -68,7 +68,7 @@ namespace CanViewer
         private void timer_formUpdate_Tick(object sender, EventArgs e)
         {
             traceControl.UpdateMessages();
-            receiveControl.UpdateMessages();
+            canReceiveControl.UpdateMessages();
             CanInterface.ClearBuffer();
         }
 
@@ -87,15 +87,15 @@ namespace CanViewer
 
         private void receiveToggleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (receiveControl.IsActive) receiveControl.StopReceiver();
-            else receiveControl.StartReceiver();
+            if (canReceiveControl.IsActive) canReceiveControl.StopReceiver();
+            else canReceiveControl.StartReceiver();
             
             updateGraphics();
         }
 
         private void receiveClearToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            receiveControl.ClearMessages();
+            canReceiveControl.ClearMessages();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -117,7 +117,7 @@ namespace CanViewer
             }
             toolStripStatusLabel_connectionStatus.Text = CanInterface.ConnectionStatus;
 
-            if (receiveControl.IsActive)
+            if (canReceiveControl.IsActive)
             {
                 receiveToggleToolStripMenuItem.Text = "Stop";
                 toolStripStatusLabel_receiveActive.Text = "Receive active";

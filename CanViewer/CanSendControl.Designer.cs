@@ -92,6 +92,7 @@
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
             this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
+            this.listView.Leave += new System.EventHandler(this.listView_Leave);
             // 
             // coulumnHeader_CANID
             // 
@@ -264,6 +265,7 @@
             this.textBox_CanID.Size = new System.Drawing.Size(100, 28);
             this.textBox_CanID.TabIndex = 4;
             this.textBox_CanID.Text = "000";
+            this.textBox_CanID.TextChanged += new System.EventHandler(this.textBox_CanID_TextChanged);
             // 
             // label2
             // 

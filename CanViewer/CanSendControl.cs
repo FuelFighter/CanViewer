@@ -13,6 +13,7 @@ namespace CanViewer
     public partial class CanSendControl : UserControl
     {
         List<CanSendMessage> Messages;
+        CanSendMessage SelectedMessage;
         TextBox[] DataTextBoxes;
 
         public CanSendControl()
@@ -30,12 +31,7 @@ namespace CanViewer
         {
             CanSendMessage msg = new CanSendMessage();
             Messages.Add(msg);
-            listView.Items.Add(new ListViewItem(msg.ListViewItems));
-        }
-
-        private void listView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdatePropertiesPanel();
+            UpdateListView();
         }
 
         private void UpdatePropertiesPanel()
@@ -48,20 +44,22 @@ namespace CanViewer
                 button_sendOnce.Enabled = false;
                 textBox_CycleTime.Enabled = false;
                 checkBox_enableAutoSend.Enabled = false;
+                SelectedMessage = null;
             }
             else
             {
                 int index = listView.SelectedIndices[0];
+                SelectedMessage = Messages[index];
                 textBox_CanID.Enabled = true;
-                textBox_CanID.Text = $"{Messages[index].CanID:X03}";
+                textBox_CanID.Text = $"{SelectedMessage.CanID:X03}";
                 numericUpDown_DataLength.Enabled = true;
-                numericUpDown_DataLength.Value = Messages[index].DataLength;
+                numericUpDown_DataLength.Value = SelectedMessage.DataLength;
                 for (int i = 0; i < DataTextBoxes.Length; i++)
                 {
-                    if (i < Messages[index].DataLength)
+                    if (i < SelectedMessage.DataLength)
                     {
                         DataTextBoxes[i].Enabled = true;
-                        DataTextBoxes[i].Text = $"{Messages[index].Data[i]:X02}";
+                        DataTextBoxes[i].Text = $"{SelectedMessage.Data[i]:X02}";
                     }
                     else
                     {
@@ -70,9 +68,44 @@ namespace CanViewer
                 }
                 button_sendOnce.Enabled = true;
                 textBox_CycleTime.Enabled = true;
-                textBox_CycleTime.Text = Messages[index].CycleTime.ToString();
+                textBox_CycleTime.Text = SelectedMessage.CycleTime.ToString();
                 checkBox_enableAutoSend.Enabled = true;
             }
+        }
+
+        private void UpdateListView()
+        {
+            listView.Items.Clear();
+            listView.Items.AddRange(Messages.Select(m => new ListViewItem(m.ListViewItems)).ToArray());
+        }
+
+        private void listView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdatePropertiesPanel();
+        }
+
+        private void textBox_CanID_TextChanged(object sender, EventArgs e)
+        {
+            ushort parsedValue;
+            if (ushort.TryParse(textBox_CanID.Text, 
+                System.Globalization.NumberStyles.HexNumber, 
+                System.Globalization.CultureInfo.CurrentCulture, 
+                out parsedValue) && 
+                parsedValue < (2 << 11))
+            {
+                SelectedMessage.CanID = parsedValue;
+            }
+            else
+            {
+                textBox_CanID.Text = $"{SelectedMessage.CanID:X03}";
+            }
+
+            UpdateListView();
+        }
+
+        private void listView_Leave(object sender, EventArgs e)
+        {
+
         }
     }
 

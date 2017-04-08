@@ -57,7 +57,9 @@
     <Compile Include="CanReceiveControl.Designer.cs">
       <DependentUpon>CanReceiveControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="CanSendControl.cs" />
+    <Compile Include="CanSendControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="CanSendControl.Designer.cs">
       <DependentUpon>CanSendControl.cs</DependentUpon>
     </Compile>

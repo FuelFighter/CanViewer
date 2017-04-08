@@ -148,7 +148,7 @@ namespace CanViewer
 
         private void addNewMessageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            canSendControl.AddNewMessage();
         }
     }
 }

@@ -51,6 +51,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDown_DataLength = new System.Windows.Forms.NumericUpDown();
+            this.checkBox_enableAutoSend = new System.Windows.Forms.CheckBox();
+            this.button_sendOnce = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DataLength)).BeginInit();
@@ -68,7 +70,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(936, 420);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(936, 523);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // listView
@@ -81,12 +83,15 @@
             this.columnHeader_Count});
             this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView.FullRowSelect = true;
+            this.listView.HideSelection = false;
             this.listView.Location = new System.Drawing.Point(3, 3);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(698, 414);
+            this.listView.Size = new System.Drawing.Size(698, 517);
             this.listView.TabIndex = 3;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
             // 
             // coulumnHeader_CANID
             // 
@@ -115,6 +120,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button_sendOnce);
+            this.groupBox1.Controls.Add(this.checkBox_enableAutoSend);
             this.groupBox1.Controls.Add(this.textBox_CycleTime);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.textBox_data7);
@@ -133,7 +140,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(707, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(226, 414);
+            this.groupBox1.Size = new System.Drawing.Size(226, 517);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Properties";
@@ -142,7 +149,7 @@
             // 
             this.textBox_CycleTime.Enabled = false;
             this.textBox_CycleTime.Font = new System.Drawing.Font("Lucida Console", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_CycleTime.Location = new System.Drawing.Point(27, 352);
+            this.textBox_CycleTime.Location = new System.Drawing.Point(27, 410);
             this.textBox_CycleTime.Name = "textBox_CycleTime";
             this.textBox_CycleTime.Size = new System.Drawing.Size(100, 28);
             this.textBox_CycleTime.TabIndex = 15;
@@ -152,7 +159,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label4.Location = new System.Drawing.Point(22, 323);
+            this.label4.Location = new System.Drawing.Point(22, 381);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(121, 26);
             this.label4.TabIndex = 14;
@@ -299,14 +306,35 @@
             0,
             0});
             // 
+            // checkBox_enableAutoSend
+            // 
+            this.checkBox_enableAutoSend.AutoSize = true;
+            this.checkBox_enableAutoSend.Enabled = false;
+            this.checkBox_enableAutoSend.Location = new System.Drawing.Point(27, 444);
+            this.checkBox_enableAutoSend.Name = "checkBox_enableAutoSend";
+            this.checkBox_enableAutoSend.Size = new System.Drawing.Size(144, 29);
+            this.checkBox_enableAutoSend.TabIndex = 16;
+            this.checkBox_enableAutoSend.Text = "Auto Send";
+            this.checkBox_enableAutoSend.UseVisualStyleBackColor = true;
+            // 
+            // button_sendOnce
+            // 
+            this.button_sendOnce.Enabled = false;
+            this.button_sendOnce.Location = new System.Drawing.Point(27, 316);
+            this.button_sendOnce.Name = "button_sendOnce";
+            this.button_sendOnce.Size = new System.Drawing.Size(142, 44);
+            this.button_sendOnce.TabIndex = 17;
+            this.button_sendOnce.Text = "Send Once";
+            this.button_sendOnce.UseVisualStyleBackColor = true;
+            // 
             // CanSendControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(936, 420);
+            this.MinimumSize = new System.Drawing.Size(936, 523);
             this.Name = "CanSendControl";
-            this.Size = new System.Drawing.Size(936, 420);
+            this.Size = new System.Drawing.Size(936, 523);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -340,5 +368,7 @@
         private System.Windows.Forms.TextBox textBox_data3;
         private System.Windows.Forms.TextBox textBox_data2;
         private System.Windows.Forms.TextBox textBox_data1;
+        private System.Windows.Forms.Button button_sendOnce;
+        private System.Windows.Forms.CheckBox checkBox_enableAutoSend;
     }
 }

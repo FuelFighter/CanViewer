@@ -92,5 +92,13 @@ namespace CanViewer
                 info = CanMessageInfo.CreateFromString(ref UnprocessedIncomingData);
             }
         }
+
+        public static void SendMessage(string message)
+        {
+            if(ActiveSerialPort != null && ActiveSerialPort.IsOpen)
+            {
+                ActiveSerialPort.WriteLine(message);
+            }
+        }
     }
 }

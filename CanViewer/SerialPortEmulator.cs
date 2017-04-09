@@ -65,5 +65,10 @@ namespace CanViewer
                 DataReceived(null, null);
             }
         }
+
+        public void WriteLine(string message)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

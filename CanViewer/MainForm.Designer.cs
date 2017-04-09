@@ -55,12 +55,12 @@ namespace CanViewer
             this.timer_dataUpdate = new System.Windows.Forms.Timer(this.components);
             this.timer_formUpdate = new System.Windows.Forms.Timer(this.components);
             this.tabPage_trace = new System.Windows.Forms.TabPage();
+            this.canTraceControl = new CanViewer.CanTraceControl();
             this.tabPage_send_receive = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.canReceiveControl = new CanViewer.CanReceiveControl();
             this.canSendControl = new CanViewer.CanSendControl();
-            this.canTraceControl = new CanViewer.CanTraceControl();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabPage_trace.SuspendLayout();
@@ -159,7 +159,8 @@ namespace CanViewer
             // addNewMessageToolStripMenuItem
             // 
             this.addNewMessageToolStripMenuItem.Name = "addNewMessageToolStripMenuItem";
-            this.addNewMessageToolStripMenuItem.Size = new System.Drawing.Size(314, 38);
+            this.addNewMessageToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.addNewMessageToolStripMenuItem.Size = new System.Drawing.Size(354, 38);
             this.addNewMessageToolStripMenuItem.Text = "Add New Message";
             this.addNewMessageToolStripMenuItem.Click += new System.EventHandler(this.addNewMessageToolStripMenuItem_Click);
             // 
@@ -241,10 +242,18 @@ namespace CanViewer
             this.tabPage_trace.Location = new System.Drawing.Point(8, 39);
             this.tabPage_trace.Name = "tabPage_trace";
             this.tabPage_trace.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_trace.Size = new System.Drawing.Size(1213, 744);
+            this.tabPage_trace.Size = new System.Drawing.Size(1213, 742);
             this.tabPage_trace.TabIndex = 1;
             this.tabPage_trace.Text = "Trace";
             this.tabPage_trace.UseVisualStyleBackColor = true;
+            // 
+            // canTraceControl
+            // 
+            this.canTraceControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.canTraceControl.Location = new System.Drawing.Point(3, 3);
+            this.canTraceControl.Name = "canTraceControl";
+            this.canTraceControl.Size = new System.Drawing.Size(1207, 736);
+            this.canTraceControl.TabIndex = 0;
             // 
             // tabPage_send_receive
             // 
@@ -275,17 +284,6 @@ namespace CanViewer
             this.splitContainer1.SplitterDistance = 232;
             this.splitContainer1.TabIndex = 1;
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage_send_receive);
-            this.tabControl1.Controls.Add(this.tabPage_trace);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 42);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1229, 789);
-            this.tabControl1.TabIndex = 2;
-            // 
             // canReceiveControl
             // 
             this.canReceiveControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -303,13 +301,16 @@ namespace CanViewer
             this.canSendControl.Size = new System.Drawing.Size(1207, 500);
             this.canSendControl.TabIndex = 1;
             // 
-            // canTraceControl
+            // tabControl1
             // 
-            this.canTraceControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.canTraceControl.Location = new System.Drawing.Point(3, 3);
-            this.canTraceControl.Name = "canTraceControl";
-            this.canTraceControl.Size = new System.Drawing.Size(1207, 738);
-            this.canTraceControl.TabIndex = 0;
+            this.tabControl1.Controls.Add(this.tabPage_send_receive);
+            this.tabControl1.Controls.Add(this.tabPage_trace);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 42);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1229, 789);
+            this.tabControl1.TabIndex = 2;
             // 
             // MainForm
             // 

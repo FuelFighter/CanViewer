@@ -69,6 +69,12 @@
     <Compile Include="CanTraceControl.Designer.cs">
       <DependentUpon>CanTraceControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCanSendMessageProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCanSendMessageProperties.Designer.cs">
+      <DependentUpon>FormCanSendMessageProperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CanTraceControl.resx">
       <DependentUpon>CanTraceControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCanSendMessageProperties.resx">
+      <DependentUpon>FormCanSendMessageProperties.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

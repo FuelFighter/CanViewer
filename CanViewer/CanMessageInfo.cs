@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace CanViewer
 {
-    class CanMessageInfo
+    public class CanMessageInfo
     {
         static System.Diagnostics.Stopwatch TimeStamper = new System.Diagnostics.Stopwatch();
 

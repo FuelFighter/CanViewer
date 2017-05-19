@@ -69,6 +69,11 @@ namespace CanViewer
         {
             canTraceControl.UpdateMessages();
             canReceiveControl.UpdateMessages();
+            if (canReceiveControl.IsActive)
+            {
+                canChannelsControl1.UpdateMessages();
+                canChannelsControl2.UpdateMessages();
+            }
             CanInterface.ClearBuffer();
         }
 
@@ -89,7 +94,7 @@ namespace CanViewer
         {
             if (canReceiveControl.IsActive) canReceiveControl.StopReceiver();
             else canReceiveControl.StartReceiver();
-            
+
             updateGraphics();
         }
 
@@ -143,12 +148,29 @@ namespace CanViewer
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Can Viewer was made by Sondre Andersen for DNV GL Fuel Fighter 2017.\nIt is made to receive can messages using an Universal Module (UM) programmed with the accompanying .bin file.",
-                "About Can Viewer version 0.3 Beta");
+                "About Can Viewer version 0.4 Beta");
         }
 
         private void addNewMessageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             canSendControl.AddNewMessage();
+        }
+
+        private void reinitParseFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CanChannelsControl.InitializeChannels();
+            MessageBox.Show($"Added these channels from the file:\n{string.Join("\n", CanChannelsControl.Channels.Select(l => $"From 0x{l.Key:X03}:\n\t{string.Join("\n\t", l.Value.Select(c => c.Name).ToArray())}").ToArray())}");
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            CanChannelsControl.InitializeChannels();
+        }
+
+        private void clearToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            canChannelsControl1.Clear();
+            canChannelsControl2.Clear();
         }
     }
 }

@@ -7,7 +7,7 @@ using System.IO;
 using System.IO.Ports;
 
 // Comment this line to disable emulation
-// using SerialPort = CanViewer.SerialPortEmulator;
+//using SerialPort = CanViewer.SerialPortEmulator;
 
 namespace CanViewer
 {
@@ -33,7 +33,7 @@ namespace CanViewer
 
         static public bool IsConnected { get { return (ActiveSerialPort != null && ActiveSerialPort.IsOpen); } }
 
-        static public CanMessageInfo[] GetMessages { get { return BufferedMessages.ToArray(); } }
+        static public CanMessageInfo[] GetMessages { get { lock (BufferedMessages) { return BufferedMessages.ToArray(); } } }
 
         static public string[] GetAvailablePortNames()
         {
@@ -88,7 +88,11 @@ namespace CanViewer
             info = CanMessageInfo.CreateFromString(ref UnprocessedIncomingData);
             while (info != null)
             {
-                BufferedMessages.Add(info);
+                lock (BufferedMessages)
+                {
+                    BufferedMessages.Add(info);
+                }
+
                 info = CanMessageInfo.CreateFromString(ref UnprocessedIncomingData);
             }
         }

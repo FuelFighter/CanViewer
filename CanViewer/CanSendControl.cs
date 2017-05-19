@@ -45,6 +45,7 @@ namespace CanViewer
             if (listView.SelectedIndices.Count > 0)
             {
                 CanSendMessage msg = Messages[listView.SelectedIndices[0]];
+                CanSendMessage new_msg = new CanSendMessage();
 
                 FormCanSendMessageProperties f = new FormCanSendMessageProperties(msg);
                 f.ShowDialog();
@@ -55,11 +56,13 @@ namespace CanViewer
                     {
                         ushort canid = f.CanID;
                         if (canid >= (1 << 11)) throw new ArgumentOutOfRangeException();
-                        msg.CanID = canid;
-                        msg.DataLength = f.DataLength;
-                        msg.Data = f.Data;
-                        msg.CycleTime = f.CycleTime;
-                        msg.AutoSendEnabled = f.AutoSend;
+                        new_msg.CanID = canid;
+                        new_msg.DataLength = f.DataLength;
+                        new_msg.Data = f.Data;
+                        new_msg.CycleTime = f.CycleTime;
+                        new_msg.AutoSendEnabled = f.AutoSend;
+
+                        msg = new_msg;
                     }
                     catch (ArgumentOutOfRangeException ex) { MessageBox.Show("Value out of range!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     catch (Exception ex) { MessageBox.Show("Invalid format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }

@@ -50,6 +50,9 @@ namespace CanViewer
             this.traceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.traceToggleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.channelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.reinitParseFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer_dataUpdate = new System.Windows.Forms.Timer(this.components);
@@ -61,6 +64,10 @@ namespace CanViewer
             this.canReceiveControl = new CanViewer.CanReceiveControl();
             this.canSendControl = new CanViewer.CanSendControl();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage_channels = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.canChannelsControl1 = new CanViewer.CanChannelsControl();
+            this.canChannelsControl2 = new CanViewer.CanChannelsControl();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabPage_trace.SuspendLayout();
@@ -70,6 +77,11 @@ namespace CanViewer
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage_channels.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -111,10 +123,11 @@ namespace CanViewer
             this.sendToolStripMenuItem,
             this.receiveToolStripMenuItem,
             this.traceToolStripMenuItem,
+            this.channelsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1229, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(1229, 42);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -125,7 +138,7 @@ namespace CanViewer
             this.disconnectToolStripMenuItem,
             this.toolStripSeparator1});
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
-            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(150, 36);
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(150, 38);
             this.connectionToolStripMenuItem.Text = "Connection";
             this.connectionToolStripMenuItem.DropDownOpened += new System.EventHandler(this.connectionToolStripMenuItem_DropDownOpened);
             // 
@@ -153,7 +166,7 @@ namespace CanViewer
             this.sendToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addNewMessageToolStripMenuItem});
             this.sendToolStripMenuItem.Name = "sendToolStripMenuItem";
-            this.sendToolStripMenuItem.Size = new System.Drawing.Size(81, 36);
+            this.sendToolStripMenuItem.Size = new System.Drawing.Size(81, 38);
             this.sendToolStripMenuItem.Text = "Send";
             // 
             // addNewMessageToolStripMenuItem
@@ -170,7 +183,7 @@ namespace CanViewer
             this.receiveToggleToolStripMenuItem,
             this.clearToolStripMenuItem});
             this.receiveToolStripMenuItem.Name = "receiveToolStripMenuItem";
-            this.receiveToolStripMenuItem.Size = new System.Drawing.Size(108, 36);
+            this.receiveToolStripMenuItem.Size = new System.Drawing.Size(108, 38);
             this.receiveToolStripMenuItem.Text = "Receive";
             // 
             // receiveToggleToolStripMenuItem
@@ -194,7 +207,7 @@ namespace CanViewer
             this.traceToggleToolStripMenuItem,
             this.clearToolStripMenuItem1});
             this.traceToolStripMenuItem.Name = "traceToolStripMenuItem";
-            this.traceToolStripMenuItem.Size = new System.Drawing.Size(82, 36);
+            this.traceToolStripMenuItem.Size = new System.Drawing.Size(82, 38);
             this.traceToolStripMenuItem.Text = "Trace";
             // 
             // traceToggleToolStripMenuItem
@@ -212,12 +225,35 @@ namespace CanViewer
             this.clearToolStripMenuItem1.Text = "Clear";
             this.clearToolStripMenuItem1.Click += new System.EventHandler(this.traceClearToolStripMenuItem_Click);
             // 
+            // channelsToolStripMenuItem
+            // 
+            this.channelsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clearToolStripMenuItem2,
+            this.reinitParseFileToolStripMenuItem});
+            this.channelsToolStripMenuItem.Name = "channelsToolStripMenuItem";
+            this.channelsToolStripMenuItem.Size = new System.Drawing.Size(125, 38);
+            this.channelsToolStripMenuItem.Text = "Channels";
+            // 
+            // clearToolStripMenuItem2
+            // 
+            this.clearToolStripMenuItem2.Name = "clearToolStripMenuItem2";
+            this.clearToolStripMenuItem2.Size = new System.Drawing.Size(279, 38);
+            this.clearToolStripMenuItem2.Text = "Clear";
+            this.clearToolStripMenuItem2.Click += new System.EventHandler(this.clearToolStripMenuItem2_Click);
+            // 
+            // reinitParseFileToolStripMenuItem
+            // 
+            this.reinitParseFileToolStripMenuItem.Name = "reinitParseFileToolStripMenuItem";
+            this.reinitParseFileToolStripMenuItem.Size = new System.Drawing.Size(279, 38);
+            this.reinitParseFileToolStripMenuItem.Text = "Reinit parse file";
+            this.reinitParseFileToolStripMenuItem.Click += new System.EventHandler(this.reinitParseFileToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(77, 36);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(77, 38);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -242,7 +278,7 @@ namespace CanViewer
             this.tabPage_trace.Location = new System.Drawing.Point(8, 39);
             this.tabPage_trace.Name = "tabPage_trace";
             this.tabPage_trace.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_trace.Size = new System.Drawing.Size(1213, 742);
+            this.tabPage_trace.Size = new System.Drawing.Size(1213, 744);
             this.tabPage_trace.TabIndex = 1;
             this.tabPage_trace.Text = "Trace";
             this.tabPage_trace.UseVisualStyleBackColor = true;
@@ -252,7 +288,7 @@ namespace CanViewer
             this.canTraceControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.canTraceControl.Location = new System.Drawing.Point(3, 3);
             this.canTraceControl.Name = "canTraceControl";
-            this.canTraceControl.Size = new System.Drawing.Size(1207, 736);
+            this.canTraceControl.Size = new System.Drawing.Size(1207, 738);
             this.canTraceControl.TabIndex = 0;
             // 
             // tabPage_send_receive
@@ -261,7 +297,7 @@ namespace CanViewer
             this.tabPage_send_receive.Location = new System.Drawing.Point(8, 39);
             this.tabPage_send_receive.Name = "tabPage_send_receive";
             this.tabPage_send_receive.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_send_receive.Size = new System.Drawing.Size(1213, 744);
+            this.tabPage_send_receive.Size = new System.Drawing.Size(1213, 742);
             this.tabPage_send_receive.TabIndex = 0;
             this.tabPage_send_receive.Text = "Send / Receive";
             this.tabPage_send_receive.UseVisualStyleBackColor = true;
@@ -280,8 +316,8 @@ namespace CanViewer
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.canSendControl);
-            this.splitContainer1.Size = new System.Drawing.Size(1207, 738);
-            this.splitContainer1.SplitterDistance = 232;
+            this.splitContainer1.Size = new System.Drawing.Size(1207, 736);
+            this.splitContainer1.SplitterDistance = 231;
             this.splitContainer1.TabIndex = 1;
             // 
             // canReceiveControl
@@ -289,7 +325,7 @@ namespace CanViewer
             this.canReceiveControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.canReceiveControl.Location = new System.Drawing.Point(0, 0);
             this.canReceiveControl.Name = "canReceiveControl";
-            this.canReceiveControl.Size = new System.Drawing.Size(1207, 232);
+            this.canReceiveControl.Size = new System.Drawing.Size(1207, 231);
             this.canReceiveControl.TabIndex = 0;
             // 
             // canSendControl
@@ -298,19 +334,64 @@ namespace CanViewer
             this.canSendControl.Location = new System.Drawing.Point(0, 0);
             this.canSendControl.MinimumSize = new System.Drawing.Size(936, 420);
             this.canSendControl.Name = "canSendControl";
-            this.canSendControl.Size = new System.Drawing.Size(1207, 502);
+            this.canSendControl.Size = new System.Drawing.Size(1207, 501);
             this.canSendControl.TabIndex = 1;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage_send_receive);
             this.tabControl1.Controls.Add(this.tabPage_trace);
+            this.tabControl1.Controls.Add(this.tabPage_channels);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 40);
+            this.tabControl1.Location = new System.Drawing.Point(0, 42);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1229, 791);
+            this.tabControl1.Size = new System.Drawing.Size(1229, 789);
             this.tabControl1.TabIndex = 2;
+            // 
+            // tabPage_channels
+            // 
+            this.tabPage_channels.Controls.Add(this.splitContainer2);
+            this.tabPage_channels.Location = new System.Drawing.Point(8, 39);
+            this.tabPage_channels.Name = "tabPage_channels";
+            this.tabPage_channels.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_channels.Size = new System.Drawing.Size(1213, 744);
+            this.tabPage_channels.TabIndex = 2;
+            this.tabPage_channels.Text = "Channels";
+            this.tabPage_channels.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.canChannelsControl1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.canChannelsControl2);
+            this.splitContainer2.Size = new System.Drawing.Size(1207, 738);
+            this.splitContainer2.SplitterDistance = 402;
+            this.splitContainer2.TabIndex = 1;
+            // 
+            // canChannelsControl1
+            // 
+            this.canChannelsControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.canChannelsControl1.Location = new System.Drawing.Point(0, 0);
+            this.canChannelsControl1.Name = "canChannelsControl1";
+            this.canChannelsControl1.Size = new System.Drawing.Size(402, 738);
+            this.canChannelsControl1.TabIndex = 0;
+            // 
+            // canChannelsControl2
+            // 
+            this.canChannelsControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.canChannelsControl2.Location = new System.Drawing.Point(0, 0);
+            this.canChannelsControl2.Name = "canChannelsControl2";
+            this.canChannelsControl2.Size = new System.Drawing.Size(801, 738);
+            this.canChannelsControl2.TabIndex = 1;
             // 
             // MainForm
             // 
@@ -321,8 +402,9 @@ namespace CanViewer
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "Can Viewer - v0.3 Beta";
+            this.Text = "Can Viewer - v0.4 Beta";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -334,6 +416,11 @@ namespace CanViewer
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage_channels.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -368,6 +455,13 @@ namespace CanViewer
         private CanSendControl canSendControl;
         private ToolStripMenuItem sendToolStripMenuItem;
         private ToolStripMenuItem addNewMessageToolStripMenuItem;
+        private TabPage tabPage_channels;
+        private ToolStripMenuItem channelsToolStripMenuItem;
+        private ToolStripMenuItem reinitParseFileToolStripMenuItem;
+        private CanChannelsControl canChannelsControl1;
+        private SplitContainer splitContainer2;
+        private CanChannelsControl canChannelsControl2;
+        private ToolStripMenuItem clearToolStripMenuItem2;
     }
 }
 
